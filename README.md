@@ -9,4 +9,4 @@
 
 3. Bitcoin Address 생성[2/3] (Public Key -> SHA256 -> SHA256 = Checksum)
 
-4. Version + Public Key Hash + CheckSum -> Base58Encode = Bitcoin Address가 된다.
+4. Bitcoin Address 생성[3/3] (Version + Public Key Hash + CheckSum -> Base58Encode = Bitcoin Address)
