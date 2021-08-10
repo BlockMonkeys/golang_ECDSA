@@ -1,6 +1,7 @@
 package main
 
 import (
+	"crypto/ecdsa"
 	"ecdsa/base58Encrypt"
 	"ecdsa/genKey"
 	"ecdsa/ripemdEncrypt"
@@ -8,19 +9,48 @@ import (
 	"fmt"
 )
 
+type BitcoinAddress struct {
+	version			[]byte
+	pubKeyHash		[]byte
+	checkSum		[]byte
+}
+
+type Node struct {
+	bitcoinAddress 			*BitcoinAddress
+	signature				string
+	pubKey					[]byte
+	privateKey				ecdsa.PrivateKey
+}
+
 func main(){
-	//** GenKey를 통해 키페어를 생성하는데,
-	//main함수가 실행될 때마다, 계속 재실행되어 keyPair가 바뀌는 문제가 존재.
+	var B BitcoinAddress
+	B.version = []byte{0}
+
+	//Generate Key Pair
 	pubKey, _ := genKey.GenKey()
-	version := []uint8{1}
 
-	//해시 암호화 & PubKey를 암호화 한 뒤, 다시 SHA-256 암호화를 함으로써 CheckSum 생성함.
-	hashed := shaEncrypt.ShaEnCryption(pubKey)
-	checkSum := shaEncrypt.ShaEnCryptionAgain(hashed)
+	//Generate CheckSum
+	checkSum := shaEncrypt.GenCheckSum(pubKey)
+	B.checkSum = checkSum
 
-	//RIPEMD
-	pubKeyHash := ripemdEncrypt.RipemdEncryption(hashed)
+	//Generate PubKeyHash
+	pubKeyHash := ripemdEncrypt.GenPubKeyHash(pubKey)
+	B.pubKeyHash = pubKeyHash
 
-	bitAddress := base58Encrypt.Base58Encryption(version, pubKeyHash, checkSum)
-	fmt.Println("BitCoinAddress :", bitAddress)
+	encode := base58Encrypt.Base58Encryption(B.version, B.pubKeyHash, B.checkSum)
+	fmt.Println("RESULT BASE58 :", encode)
+
+
+
+	////해시 암호화 & PubKey를 암호화 한 뒤, 다시 SHA-256 암호화를 함으로써 CheckSum 생성함.
+	//hashedPublicKey := shaEncrypt.ShaEncryption(pubKey) // [32]byte -> []byte
+	//checkSum := shaEncrypt.ShaEncryptionAgain(hashedPublicKey)
+	//b.checkSum = fmt.Sprintf("%x", checkSum)
+	//
+	//rPubKey := ripemdEncrypt.RipemdEncryption(hashedPublicKey)
+	//b.pubKeyHash = rPubKey
+	//
+	//address := base58Encrypt.Base58Encryption(b.version, b.pubKeyHash, b.checkSum)
+	//fmt.Println()
+	//fmt.Println("문자열 어드레스: ", address)
 }
