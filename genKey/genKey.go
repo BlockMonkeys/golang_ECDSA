@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-func GenKey()([]byte, ecdsa.PrivateKey){
+func GenKey()([]byte, *ecdsa.PrivateKey){
 	//ECDSA KEYPAIR 생성
 	curve := elliptic.P256()
 	privateKey, err := ecdsa.GenerateKey(curve, rand.Reader)
@@ -18,7 +18,7 @@ func GenKey()([]byte, ecdsa.PrivateKey){
 	}
 	pubKey := append(privateKey.PublicKey.X.Bytes(), privateKey.PublicKey.Y.Bytes()...)
 
-	return pubKey, *privateKey
+	return pubKey, privateKey
 }
 
 
