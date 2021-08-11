@@ -12,8 +12,7 @@ $ go build
 위 명령어를 입력 후, build된, "ecdsa" 파일을 실행해서, 사용법 설명서에 맞추어 0, 1, 2, 3, 4를 입력하여 실행한다. (영상 참조)
 
 ## 실행영상
-
-![hhh](https://user-images.githubusercontent.com/66409384/129011280-bfcbcfb6-8af3-49fd-ad5d-cad1e0303f13.gif)
+![rere](https://user-images.githubusercontent.com/66409384/129011801-2e88079d-e545-44e5-ad9c-0622ab43c94e.gif)
 
 
 
