@@ -6,9 +6,7 @@
 ## 실행방법
 
 $ go mod tidy <br/>
-
 $ go mod init <br/>
-
 $ go build <br/>
 
 위 명령어를 입력 후, build된, "ecdsa" 파일을 실행해서, 사용법 설명서에 맞추어 0, 1, 2, 3, 4를 입력하여 실행한다. (영상 참조)
