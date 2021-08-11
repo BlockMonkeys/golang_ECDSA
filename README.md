@@ -13,6 +13,9 @@ $ go build
 ## 실행영상
 
 
+![ggg](https://user-images.githubusercontent.com/66409384/129010941-97236dbe-892f-470d-af46-9ef99ee8b7aa.gif)
+
+
 
 ## 로직설명
 
