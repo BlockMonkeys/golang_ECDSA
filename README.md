@@ -1,3 +1,4 @@
+
 # golang_ECDSA
 
 비트코인 주소 체계를 기반으로 임의의 데이터의 전자서명 검증로직 개발
@@ -12,8 +13,7 @@ $ go build
 
 ## 실행영상
 
-
-![ggg](https://user-images.githubusercontent.com/66409384/129010941-97236dbe-892f-470d-af46-9ef99ee8b7aa.gif)
+![hhh](https://user-images.githubusercontent.com/66409384/129011280-bfcbcfb6-8af3-49fd-ad5d-cad1e0303f13.gif)
 
 
 
